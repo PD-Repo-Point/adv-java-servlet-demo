@@ -6,13 +6,13 @@
   <display-name>Archetype Created Web Application</display-name>
 
   <servlet>
-    <servlet-name>test</servlet-name>
-    <servlet-class>HelloWorldServlet</servlet-class>
+    <servlet-name>register</servlet-name>
+    <servlet-class>StudentRegister</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>test</servlet-name>
-    <url-pattern>/welcome</url-pattern>
+    <servlet-name>register</servlet-name>
+    <url-pattern>/StudentRegister</url-pattern>
   </servlet-mapping>
 
 </web-app>
