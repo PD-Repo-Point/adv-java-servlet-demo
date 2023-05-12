@@ -8,8 +8,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Properties;
 import java.util.Random;
 
@@ -27,9 +29,7 @@ public class StudentRegister extends HttpServlet {
         String mname =req.getParameter("mother_name");
         String addr = req.getParameter("address");
         double marks = Double.parseDouble(req.getParameter("marks"));
-        //------- date = -------------
-        // DOB ===>
-
+        LocalDate dob = LocalDate.parse(req.getParameter("dob"));
 
         Properties prop = new Properties();
 
@@ -46,7 +46,7 @@ public class StudentRegister extends HttpServlet {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
-                  "insert into student_details values(?,?,?,?,?,?)"
+                  "insert into student_details values(?,?,?,?,?,?,?)"
             );
             preparedStatement.setInt(1, id);
             preparedStatement.setString(2, name);
@@ -54,7 +54,7 @@ public class StudentRegister extends HttpServlet {
             preparedStatement.setString(4, mname);
             preparedStatement.setString(5, addr);
             preparedStatement.setBigDecimal(6, BigDecimal.valueOf(marks));
-            // store it in the database
+            preparedStatement.setDate(7, Date.valueOf(dob));
 
             int num = preparedStatement.executeUpdate();
 
